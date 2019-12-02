@@ -20,6 +20,7 @@ const Frontpage = (props) => {
           <br />
           <input type="submit" value="SEND" onClick="#"/>
         </form>
+        <DisplayDate/>
       </header>
     </div>
   );
