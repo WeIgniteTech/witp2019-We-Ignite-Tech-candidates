@@ -9,40 +9,29 @@ const Frontpage2 = (props) => {
 
   const addCandidate = (event) => {
     event.preventDefault()
-    const candidateObject = {
-      content: newCandidate,
-      date: new Date().toISOString(),
-      important: Math.random() > 0.5,
+    // const candidateObject = {
+      // content: newCandidate,
+      // date: new Date().toISOString(),
+      // important: Math.random() > 0.5,
       // id: notes.length + 1,
+    // }
+
+    const candidateObject = {
+      "records": [
+        {
+          "fields": {"name": newCandidate,"age": 13}
+        }
+      ]
     }
-    // const url = 'http://localhost:3000/api/candidates';
-    // const options = {
-    //   method: 'POST',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json;charset=UTF-8'
-    //   },
-    //   body: JSON.stringify({
-    //     a: 10,
-    //     b: 20
-    //   })
-    // };
-    //
-    // fetch(url, options)
-    //   .then(response => {
-    //     console.log(response.status);
-    //   });
     const rep = localStorage.getItem('rep')
     const token = localStorage.getItem('token')
     const config = {
      mode: 'no-cors',
      headers: {
        'Content-Type': 'application/json',
-       'Accept': 'application/json'
-       // 'x-access-token': token,
-       // 'Access-Control-Allow-Credentials':true,
-       // 'Access-Control-Allow-Origin': "*",
-       // 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+       'Access-Control-Allow-Credentials':false,
+       'Access-Control-Allow-Origin': "*",
+       'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
 
      },
      withCredentials: true,
@@ -50,6 +39,7 @@ const Frontpage2 = (props) => {
     }
     axios
     .post('http://localhost:3000/api/candidates',JSON.stringify(candidateObject),config)
+    // .post('https://api.airtable.com/v0/appUdJOf889CrTa8y/candidates',candidateObject,config)
     .then(response => {
       console.log(response)
       setCandidate(response.data)
@@ -69,7 +59,7 @@ const Frontpage2 = (props) => {
       <header className="Frontpage-header">
         <img src={props.logo} className="Frontpage-logo" alt="logo" />
         <p>
-          We Ignite Tech application 2
+          We Ignite Tech application 3
           </p>
 
         <form onSubmit={addCandidate}>

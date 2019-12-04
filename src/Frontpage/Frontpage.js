@@ -19,14 +19,14 @@ const Frontpage = (props) => {
           </label>
           <br />
           <label>
-            Hvor gammel er du?
+            Hvor gammel er du?s
             <br />
             <input type="text" name="age" />
           </label>
           <br />
-          
-          <input type="submit" 
-                value="SEND" 
+
+          <input className="new-name" type="submit" autoFocus name="name"
+                value="SEND"
                 onClick="document.getElementById('namedetails').submit();"/>
         </form>
         <DisplayDate/>
