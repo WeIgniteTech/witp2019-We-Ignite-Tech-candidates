@@ -21,6 +21,8 @@ app.use(mount("/", static_pages));
 
 app.use(BodyParser());
 app.use(Logger());
+// const cors = require('./cors');
+// app.use(cors);
 
 
 /*
@@ -53,6 +55,15 @@ const now = router.get('/api/now',
       ctx.body = `{"today": "${date}"}`;
 })
 app.use(now);
+
+const healthcheck2 = router.get('/pepe',
+  (ctx) => {
+      console.log("Healthcheck handler", ctx.path);
+      console.log(ctx.query);
+      ctx.status = HttpStatus.OK;
+      ctx.body = "pepe is home";
+})
+app.use(healthcheck2);
 
 
 /*
