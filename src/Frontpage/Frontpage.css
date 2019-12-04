@@ -1,5 +1,13 @@
 .Frontpage {
   text-align: center;
+  background-color: #282c34;
+  background-size: 100 px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 80px;
+  
 }
 
 .Frontpage-logo {
@@ -8,11 +16,40 @@
 
 .Frontpage-header {
   background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
+  font-family: monospace;
+  font-size: 20px;
+  
+}
+
+body {
+  background-color: #282c34;
+}
+
+p { 
+  color:white; 
+  font-weight: bold; 
+  font-family: monospace;
+  width: 300px; 
+  font-size: 25px;
+  padding-bottom: 0px;
+  justify-content: center;
+  align-items: center;
+ 
+  
+}
+
+label {
+  color: white;
+ 
+}
+
+input {
+  font-family: monospace;
+  font-size: 20px;
+  border: 2px dashed  #ffffff;
+  box-shadow: 0 0 0 2px rgb(62, 113, 172); 
 }
