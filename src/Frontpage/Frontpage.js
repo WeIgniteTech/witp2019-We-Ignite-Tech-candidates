@@ -7,30 +7,37 @@ const Frontpage = (props) => {
     <div className="Frontpage">
       <header className="Frontpage-header">
         <img src={props.logo} className="Frontpage-logo" alt="logo" />
-        <p>
-          We Ignite Tech application
-        </p>
+        <h1>
+          WE IGNITE TECH APPLICATION
+        </h1>
 
+      </header>
+      <body>
         <form id="namedetails" method="post" action="http://localhost:3000/api/candidates">
-          <label>
+          <p>
             Hva heter du?
-            <br />
+        </p>
+          
+          <label>
             <input type="text" name="name" />
           </label>
-          <br />
+          <p>
+            Hvor gammel er du?
+          </p>
+         
           <label>
-            Hvor gammel er du?s
-            <br />
             <input type="text" name="age" />
           </label>
-          <br />
+         
+          <br></br>
+          <br></br>
+          <br></br>
 
-          <input className="new-name" type="submit" autoFocus name="name"
-                value="SEND"
-                onClick="document.getElementById('namedetails').submit();"/>
+          <button type="submit" className="new-name"
+            children="SEND"
+            onClick="document.getElementById('namedetails').submit();" />
         </form>
-        <DisplayDate/>
-      </header>
+      </body>
     </div>
   );
 };
