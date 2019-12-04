@@ -20,8 +20,8 @@
   align-items: center;
   justify-content: center;
   color: white;
-  font-family: monospace;
-  font-size: 20px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
   
 }
 
@@ -32,24 +32,30 @@ body {
 p { 
   color:white; 
   font-weight: bold; 
-  font-family: monospace;
+  font-family: 'Courier New', Courier, monospace;
   width: 300px; 
-  font-size: 25px;
+  font-size: 20px;
   padding-bottom: 0px;
   justify-content: center;
   align-items: center;
- 
-  
 }
 
 label {
   color: white;
- 
 }
 
 input {
-  font-family: monospace;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
   font-size: 20px;
   border: 2px dashed  #ffffff;
-  box-shadow: 0 0 0 2px rgb(62, 113, 172); 
+  box-shadow: 0 0 0 2px #353B43(62, 113, 172); 
+}
+
+button {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-size: 16px;
+  border: 2px dashed  #ffffff;
+  box-shadow: 0 0 0 2px #353B43(62, 113, 172); 
 }

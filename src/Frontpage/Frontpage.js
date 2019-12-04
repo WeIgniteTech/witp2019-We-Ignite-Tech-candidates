@@ -34,8 +34,8 @@ const Frontpage = (props) => {
           <br></br>
           <br></br>
 
-          <input type="submit"
-            value="SEND"
+          <button type="submit"
+            children="SEND"
             onClick="document.getElementById('namedetails').submit();" />
         </form>
       </body>
