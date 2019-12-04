@@ -39,7 +39,6 @@ const Frontpage = (props) => {
             onClick="document.getElementById('namedetails').submit();" />
         </form>
       </body>
-
     </div>
   );
 };
