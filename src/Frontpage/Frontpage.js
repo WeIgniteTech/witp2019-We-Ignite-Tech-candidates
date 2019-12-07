@@ -21,7 +21,6 @@ const Frontpage = (props) => {
           <label>
             <input type="text" name="name" />
           </label>
-         
           <p>
             Hvor gammel er du?
           </p>
@@ -34,7 +33,7 @@ const Frontpage = (props) => {
           <br></br>
           <br></br>
 
-          <button type="submit"
+          <button type="submit" className="new-name"
             children="SEND"
             onClick="document.getElementById('namedetails').submit();" />
         </form>

@@ -6,6 +6,7 @@ const HttpStatus = require("http-status");
 const serve = require("koa-static");
 const router = require('koa-route');
 const mount = require("koa-mount");
+const axios = require("axios");
 
 
 const app = new Koa();
@@ -76,10 +77,28 @@ const new_cand = router.post('/api/candidates',
       console.log('path: ', ctx.path);
       console.log('query: ', ctx.query);
       console.log('body: ', ctx.request.body);
-      console.log('ctx: ', ctx);
+      // console.log('ctx: ', ctx);
       // ctx.status = HttpStatus.OK;
       const date = new Date();
       ctx.body = ctx.request.body;
+      candidateObject = ctx.request.body;
+
+      const config = {
+       // mode: 'no-cors',
+         headers: {
+           'Content-Type': 'application/json',
+           'Authorization':'Bearer keyn3fIZfJ9dEX8Px'
+         }
+       }
+      axios
+      .post('https://api.airtable.com/v0/appUdJOf889CrTa8y/candidates',candidateObject,config)
+      .then(response => {
+        // console.log(response)
+      })
+      .catch(function (error) {
+      console.log(error);
+      })
+
 })
 app.use(new_cand);
 
