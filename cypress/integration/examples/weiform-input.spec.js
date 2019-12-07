@@ -11,7 +11,7 @@ describe('Form input', () => {
   });
   //automate cypress to type for you, and the text filed holds that value
   it('assert you can type', () => {
-    cy.wait(1000)
+    cy.wait(100)
     const myText = 'Olav Torbjorn';
     // cy.visit('/');
     cy.get('.new-name').type(myText).should('have.value',myText);
