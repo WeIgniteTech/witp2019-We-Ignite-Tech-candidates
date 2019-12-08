@@ -16,6 +16,18 @@ describe('Form input', () => {
     // cy.visit('/');
     cy.get('.new-name').type(myText).should('have.value',myText);
   });
+  it('assert you can type', () => {
+    cy.wait(100)
+    const myText = '26';
+    // cy.visit('/');
+    cy.get('.new-age').type(myText).should('have.value',myText);
+  });
+  it('assert you can type', () => {
+    cy.wait(100)
+    const myText = '9';
+    // cy.visit('/');
+    cy.get('.new-experience').type(myText).should('have.value',myText);
+  });
   //automate cypress to click send
   it('finds the content "SEND"', function() {
     // cy.visit('/')
