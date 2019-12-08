@@ -11,6 +11,7 @@ The application is composed of:
 
 The backend API has two endpoints:
  - `/api/candidates` post endpoint to add a candidate
+ - `/api/listcandidates` json with the candidates
  - `/healthcheck` returns the String 'RUNNING'
 
 

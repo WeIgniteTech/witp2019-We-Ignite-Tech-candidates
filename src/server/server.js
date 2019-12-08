@@ -81,7 +81,9 @@ const listCand = router.get('/api/listcandidates',
       records.forEach((record) => {
         candidatesList.push({
           "name": record.fields.name,
-          "age": record.fields.age
+          "age": record.fields.age,
+          "experience": record.fields.experience,
+          "decipher": record.fields.decipher
         });
       });
       ctx.body = candidatesList;
