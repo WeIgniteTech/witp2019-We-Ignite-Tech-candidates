@@ -46,5 +46,9 @@ https://medium.com/hackernoon/serving-react-and-koa-together-720ba6668298
 
 ## Integration and unit testing
 ### `npm run cypress`
+There are several tests:
+weiform-input : fills and sends the form
+weipost-form : test the Koa enpoints to POST and to get
+wei-responsive : shows the app in different sizes to see how it will look
 
 This command will build run the cypress tests.
