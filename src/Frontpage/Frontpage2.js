@@ -116,6 +116,7 @@ const Frontpage2 = (props) => {
             </label>
             <br /><br />
             <button type="submit">SEND</button>
+            
           </form>
           <DisplayDate />
         </header>
