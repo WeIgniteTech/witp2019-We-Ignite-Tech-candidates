@@ -1,30 +1,21 @@
 import React,{ useState, useEffect } from 'react'
 import './Frontpage.css'
-import DisplayDate from '../DisplayDate/DisplayDate'
+// import DisplayDate from '../DisplayDate/DisplayDate'
 import axios from 'axios'
 
 const Frontpage2 = (props) => {
   const [candidates, setCandidate] = useState([])
   const [newCandidate, setNewCandidate] = useState('')
-
+  let creation_message=''
   const addCandidate = (event) => {
     event.preventDefault()
-    // const candidateObject = {
-      // content: newCandidate,
-      // date: new Date().toISOString(),
-      // important: Math.random() > 0.5,
-      // id: notes.length + 1,
-    // }
-
-    const candidateObject = {
-      "records": [
+    const candidateObject = [
         {
           "fields": {"name": newCandidate,"age": 13}
         }
       ]
-    }
-    const rep = localStorage.getItem('rep')
-    const token = localStorage.getItem('token')
+    // const rep = localStorage.getItem('rep')
+    // const token = localStorage.getItem('token')
     const config = {
      mode: 'no-cors',
      headers: {
@@ -39,10 +30,10 @@ const Frontpage2 = (props) => {
     }
     axios
     .post('http://localhost:3000/api/candidates',JSON.stringify(candidateObject),config)
-    // .post('https://api.airtable.com/v0/appUdJOf889CrTa8y/candidates',candidateObject,config)
     .then(response => {
       console.log(response)
       setCandidate(response.data)
+      console.log("response:",response)
       setNewCandidate('')
     })
     .catch(function (error) {
@@ -50,7 +41,7 @@ const Frontpage2 = (props) => {
     })
   }
   const handleCandidateChange = (event) => {
-    console.log(event.target.value)
+    // console.log(event.target.value)
     setNewCandidate(event.target.value)
   }
 
@@ -73,7 +64,6 @@ const Frontpage2 = (props) => {
           <br />
           <button type="submit">SEND</button>
         </form>
-        <DisplayDate/>
       </header>
     </div>
   );

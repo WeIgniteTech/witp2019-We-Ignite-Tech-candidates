@@ -2,7 +2,7 @@ const Koa = require('koa');
 const BodyParser = require("koa-bodyparser");
 const Logger = require("koa-logger");
 const HttpStatus = require("http-status");
-
+// const cors = require('koa-cors');
 const serve = require("koa-static");
 const router = require('koa-route');
 const mount = require("koa-mount");
@@ -19,13 +19,14 @@ const PORT = process.env.PORT || 3000;
    it serves the 'build' directory
 */
 const static_pages = new Koa();
+// app.use(cors);
 static_pages.use(serve(__dirname + "/../../build"));
 app.use(mount("/", static_pages));
 
 app.use(BodyParser());
 app.use(Logger());
 // const cors = require('./cors');
-// app.use(cors);
+
 
 
 /*
@@ -68,6 +69,35 @@ const healthcheck2 = router.get('/pepe',
   })
 app.use(healthcheck2);
 
+/*
+retrieve candidates
+
+*/
+// const listCand = router.get('/api/listcandidates',
+//   async (ctx) => {
+//     try {
+//       const record = await listCandidates();
+//       console.log('Retrieved', record.id);
+//       ctx.body = "Record ID from API: " + record.id;
+//   } catch (err) {
+//       // handle exception
+//   }
+// })
+// app.use(listCand);
+
+app.use(router.get('/api/listcandidates', async function (ctx) {
+    /* please check return value if it returns correct value. */
+    try {
+        const record = await getCandidates();
+        console.log('Retrieved', record.id);
+        ctx.body = "Record ID from API: " + record.id;
+    } catch (err) {
+        // handle exception
+    }
+}));
+
+
+
 
 /*
   '/api/candidate' endpoint
@@ -75,17 +105,18 @@ app.use(healthcheck2);
   This endpoint returns the actual date
 */
 const new_cand = router.post('/api/candidates2',
-  (ctx) => {
-    candidateObject = ctx.request.body;
+   (ctx) => {
+      candidateObject = ctx.request.body;
 
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer keyn3fIZfJ9dEX8Px'
-      }
-    }
-    axios
-      .post('https://api.airtable.com/v0/appUdJOf889CrTa8y/candidates', candidateObject, config)
+      const config = {
+       // mode: 'no-cors',
+         headers: {
+           'Content-Type': 'application/json',
+           'Authorization':'Bearer keyn3fIZfJ9dEX8Px'
+         }
+       }
+        axios
+      .post('https://api.airtable.com/v0/appUdJOf889CrTa8y/candidates',candidateObject,config)
       .then(res => {
         ctx.status = HttpStatus.OK;
         //console.log(res.data);
@@ -108,7 +139,7 @@ app.use(new_cand);
 
 app.use(router.post('/api/candidates', async function (ctx) {
   try {
-    const record = await postCandidate();
+    const record = await postCandidate(ctx.request.body);
     ctx.status = HttpStatus.OK;
     ctx.body = '{"status": 200, "message": "Content saved in the database"}';
     let candidateList = record
@@ -119,23 +150,40 @@ app.use(router.post('/api/candidates', async function (ctx) {
   }
 }));
 
-function postCandidate() {
+function postCandidate(newCandidate) {
   return new Promise((resolve, reject) => {
-    base('candidates').create([
-      {
-        "fields": {
-          "name": "carlos gomez",
-          "age": 21
-        }
-      }
-    ], function (err, record) {
+    base('candidates').create(newCandidate, function(err, record) {
       if (err) {
         console.error(err);
         reject(err);
-      } else {
-        console.log(record);
-        resolve(record);
       }
+      else {
+      // records.forEach(function (record) {
+        // console.log(record);
+        console.log('Retrieved', record);
+        resolve(record);
+      // });
+      }
+    });
+  });
+}
+
+function getCandidates() {
+  return new Promise((resolve, reject) => {
+    base('candidates').select({
+      view: 'Grid view'
+    }).firstPage(function(err, records) {
+        if (err) {
+          console.error(err);
+          reject(err);
+        }
+        else {
+          records.forEach(function(record) {
+              console.log('Retrieved', record.get('id_candidates'));
+          });
+
+          resolve(records);
+        }
     });
   });
 }
