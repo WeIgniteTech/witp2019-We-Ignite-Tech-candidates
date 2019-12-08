@@ -22,13 +22,14 @@ const Frontpage2 = (props) => {
   const [newCandidate, setNewCandidate] = useState('')
   const [newAge, setNewAge] = useState(0)
   const [newExperience, setNewExperience] = useState(0)
+  const [newDecipher, setNewDecipher] = useState('')
   let creation_message = ''
 
   const addCandidate = (event) => {
     event.preventDefault()
     const candidateObject = [
       {
-        "fields": { "name": newCandidate, "age": Number(newAge), "experience": Number(newExperience) }
+        "fields": { "name": newCandidate, "age": Number(newAge), "experience": Number(newExperience),"decipher": newDecipher }
       }
     ]
 
@@ -74,6 +75,10 @@ const Frontpage2 = (props) => {
     setNewExperience(event.target.value)
   }
 
+  const handleDecipherChange = (event) => {
+    setNewDecipher(event.target.value)
+  }
+
   if (candidate != '') {
     return (
       <div className="Frontpage">
@@ -113,6 +118,11 @@ const Frontpage2 = (props) => {
             <label>
               <h3>Hvor mange år erfaring du har?</h3>
               <input className="new-experience" type="number" name="experience" onChange={handleExperienceChange} />
+            </label>
+            <br />
+            <label>
+              <h3>Can you decipher this secret message : SSBsaWtlIHRvIGNvZGUgaXQgY29kZSBpdA==</h3>
+              <input className="new-decipher" type="text" name="decipher" onChange={handleDecipherChange} />
             </label>
             <br /><br />
             <button type="submit">SEND</button>

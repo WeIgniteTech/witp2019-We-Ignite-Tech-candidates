@@ -15,27 +15,13 @@ describe('Form input', () => {
     cy.wait(100)
     const myText = 'Olav Torbjorn';
     cy.get('.new-name').type(myText).should('have.value',myText);
+    cy.wait(1000)
     const myText2 = '9';
     cy.get('.new-age').type(myText2).should('have.value',myText2);
+    cy.wait(1000)
     const myText3 = '9';
     cy.get('.new-experience').type(myText3).should('have.value',myText3);
     //sends the form
     cy.contains('SEND').click()
   });
-  // it('assert you can type', () => {
-  //   cy.wait(100)
-  //   const myText2 = '26';
-  //   cy.get('.new-age').type(myText).should('have.value',myText2);
-  // });
-  // it('assert you can type', () => {
-  //   cy.wait(100)
-  //   const myText3 = '9';
-  //   cy.get('.new-experience').type(myText).should('have.value',myText3);
-  // });
-  //automate cypress to click send
-  // it('finds the content "SEND"', function() {
-  //   // cy.visit('/')
-  //
-  //   cy.contains('SEND').click()
-  // });
 });
