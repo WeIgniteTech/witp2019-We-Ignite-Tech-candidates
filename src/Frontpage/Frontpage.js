@@ -107,12 +107,12 @@ const Frontpage2 = (props) => {
             <br />
             <label>
               <h3>Hvor gammel er du?</h3>
-              <input className="new-age" type="number" name="age" autoFocus onChange={handleAgeChange} />
+              <input className="new-age" type="number" name="age" onChange={handleAgeChange} />
             </label>
             <br />
             <label>
               <h3>Hvor mange år erfaring du har?</h3>
-              <input className="new-experience" type="number" name="experience" autoFocus onChange={handleExperienceChange} />
+              <input className="new-experience" type="number" name="experience" onChange={handleExperienceChange} />
             </label>
             <br /><br />
             <button type="submit">SEND</button>
