@@ -1,38 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import './Frontpage.css'
-import DisplayDate from '../DisplayDate/DisplayDate'
 import axios from 'axios'
 
-const Thankyou = (props) => {
-
-  if (props.candidate !== null) {
-    return (
-      <h1>
-        Thanks for registration
-      </h1>
-    );
-  } else {
-    return null
-  }
-
-};
-
-const Frontpage2 = (props) => {
+const Frontpage = (props) => {
   const [candidate, setCandidate] = useState('')
   const [newCandidate, setNewCandidate] = useState('')
   const [newAge, setNewAge] = useState(0)
   const [newExperience, setNewExperience] = useState(0)
   const [newDecipher, setNewDecipher] = useState('')
   const [newEmail, setNewEmail] = useState('')
-  let creation_message = ''
 
   const addCandidate = (event) => {
     event.preventDefault()
     const candidateObject = [
       {
-        "fields": { "name": newCandidate, "age": Number(newAge),
-        "experience": Number(newExperience),"decipher": newDecipher,
-        "email": newEmail}
+        "fields": {
+          "name": newCandidate, 
+          "age": Number(newAge),
+          "experience": Number(newExperience), 
+          "decipher": newDecipher,
+          "email": newEmail
+        }
       }
     ]
 
@@ -147,4 +135,4 @@ const Frontpage2 = (props) => {
 
 };
 
-export default Frontpage2;
+export default Frontpage;
