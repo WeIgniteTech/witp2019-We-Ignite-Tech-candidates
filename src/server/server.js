@@ -83,7 +83,8 @@ const listCand = router.get('/api/listcandidates',
           "name": record.fields.name,
           "age": record.fields.age,
           "experience": record.fields.experience,
-          "decipher": record.fields.decipher
+          "decipher": record.fields.decipher,
+          "email": record.fields.email
         });
       });
       ctx.body = candidatesList;

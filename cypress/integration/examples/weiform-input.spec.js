@@ -21,6 +21,10 @@ describe('Form input', () => {
     cy.wait(1000)
     const myText3 = '9';
     cy.get('.new-experience').type(myText3).should('have.value',myText3);
+    let textIn = 'no clue';
+    cy.get('.new-decipher').type(textIn).should('have.value',textIn);
+    let textIn2 = 'olav@weignite.com';
+    cy.get('.new-email').type(textIn2).should('have.value',textIn2);
     //sends the form
     cy.contains('SEND').click()
   });
