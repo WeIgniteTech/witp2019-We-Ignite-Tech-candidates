@@ -73,28 +73,36 @@ app.use(healthcheck2);
 retrieve candidates
 
 */
-// const listCand = router.get('/api/listcandidates',
-//   async (ctx) => {
-//     try {
-//       const record = await listCandidates();
-//       console.log('Retrieved', record.id);
-//       ctx.body = "Record ID from API: " + record.id;
-//   } catch (err) {
-//       // handle exception
-//   }
-// })
-// app.use(listCand);
-
-app.use(router.get('/api/listcandidates', async function (ctx) {
-    /* please check return value if it returns correct value. */
+const listCand = router.get('/api/listcandidates',
+  async (ctx) => {
     try {
-        const record = await getCandidates();
-        console.log('Retrieved', record.id);
-        ctx.body = "Record ID from API: " + record.id;
-    } catch (err) {
-        // handle exception
-    }
-}));
+      const records = await getCandidates();
+      let candidatesList = [];
+      records.forEach((record) => {
+        candidatesList.push({
+          "name": record.fields.name,
+          "age": record.fields.age
+        });
+      });
+      ctx.body = candidatesList;
+  } catch (err) {
+      // handle exception
+    console.log('Got an error: ', err);
+    ctx.body = "Failed :( ";
+  }
+})
+app.use(listCand);
+
+// app.use(router.get('/api/listcandidates', async function (ctx) {
+//     /* please check return value if it returns correct value. */
+//     try {
+//         const record = await getCandidates();
+//         console.log('Retrieved', record.id);
+//         ctx.body = "Record ID from API: " + record.id;
+//     } catch (err) {
+//         // handle exception
+//     }
+// }));
 
 
 
@@ -178,10 +186,9 @@ function getCandidates() {
           reject(err);
         }
         else {
-          records.forEach(function(record) {
-              console.log('Retrieved', record.get('id_candidates'));
-          });
-
+          // records.forEach(function(record) {
+          //     console.log('Retrieved', record.get('id_candidates'));
+          // });
           resolve(records);
         }
     });
