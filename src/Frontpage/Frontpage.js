@@ -15,9 +15,9 @@ const Frontpage = (props) => {
     const candidateObject = [
       {
         "fields": {
-          "name": newCandidate, 
+          "name": newCandidate,
           "age": Number(newAge),
-          "experience": Number(newExperience), 
+          "experience": Number(newExperience),
           "decipher": newDecipher,
           "email": newEmail
         }
@@ -101,17 +101,17 @@ const Frontpage = (props) => {
           <form onSubmit={addCandidate}>
             <label>
               <h3>Hva heter du?</h3>
-              <input className="new-name" type="text" name="name" autoFocus onChange={handleCandidateChange} />
+              <input className="new-name" type="text" required name="name" autoFocus onChange={handleCandidateChange} />
             </label>
             <br />
             <label>
               <h3>Hvor gammel er du?</h3>
-              <input className="new-age" type="number" name="age" onChange={handleAgeChange} />
+              <input className="new-age" type="number" required name="age" onChange={handleAgeChange} />
             </label>
             <br />
             <label>
               <h3>Hvor mange år erfaring har du?</h3>
-              <input className="new-experience" type="number" name="experience" onChange={handleExperienceChange} />
+              <input className="new-experience" type="number" required name="experience" onChange={handleExperienceChange} />
             </label>
             <br />
             <label>
@@ -121,7 +121,7 @@ const Frontpage = (props) => {
             <br />
             <label>
               <h3>Epost:</h3>
-              <input className="new-email" type="email" name="email" onChange={handleEmailChange} />
+              <input className="new-email" type="email" required name="email" onChange={handleEmailChange} />
             </label>
             <br /><br />
             <button type="submit">SEND</button>
