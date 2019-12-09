@@ -115,7 +115,7 @@ const Frontpage = (props) => {
             </label>
             <br />
             <label>
-              <h3>Can you decipher this secret message : SSBsaWtlIHRvIGNvZGUgaXQgY29kZSBpdA==</h3>
+              <h3>Kan du lose den: SSBsaWtlIHRvIGNvZGUgaXQgY29kZSBpdA==</h3>
               <input className="new-decipher" type="text" name="decipher" onChange={handleDecipherChange} />
             </label>
             <br />
