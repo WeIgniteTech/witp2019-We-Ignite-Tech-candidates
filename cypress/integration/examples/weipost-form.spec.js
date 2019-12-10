@@ -27,7 +27,7 @@ describe('The Home Page', function () {
       expect(response).to.have.property('body')
       expect(response.body).to.have.property('length')
       var records2 =response.body.length
-      expect(records2).to.equal(35)
+      expect(records2).to.equal(1)
     })
     // our auth cookie should be present
     // cy.getCookie('your-session-cookie').should('exist')

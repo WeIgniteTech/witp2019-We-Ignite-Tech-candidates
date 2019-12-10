@@ -100,28 +100,28 @@ const Frontpage = (props) => {
 
           <form onSubmit={addCandidate}>
             <label>
-              <h3>Hva heter du?</h3>
-              <input className="new-name" type="text" required name="name" autoFocus onChange={handleCandidateChange} />
+              <h4>Hva heter du?</h4>
+              <input className="new-name" type="text" required name="name" autoFocus onChange={handleCandidateChange} placeholder="navn" />
             </label>
             <br />
             <label>
-              <h3>Hvor gammel er du?</h3>
-              <input className="new-age" type="number" required name="age" onChange={handleAgeChange} />
+              <h4>Hvor gammel er du?</h4>
+              <input className="new-age" type="number" required name="age" onChange={handleAgeChange}  placeholder="alder"/>
             </label>
             <br />
             <label>
-              <h3>Hvor mange år erfaring har du?</h3>
-              <input className="new-experience" type="number" required name="experience" onChange={handleExperienceChange} />
+              <h4>Hvor mange år erfaring har du?</h4>
+              <input className="new-experience" type="number" required name="experience" onChange={handleExperienceChange}  placeholder="erfaring"/>
             </label>
             <br />
             <label>
-              <h3>Kan du lose den: SSBsaWtlIHRvIGNvZGUgaXQgY29kZSBpdA==</h3>
-              <input className="new-decipher" type="text" name="decipher" onChange={handleDecipherChange} />
+              <h4>Kan du løse dette:: SSBsaWtlIHRvIGNvZGUgaXQgY29kZSBpdA==</h4>
+              <input className="new-decipher" type="text" required name="decipher" onChange={handleDecipherChange}  placeholder="løsning"/>
             </label>
             <br />
             <label>
-              <h3>Epost:</h3>
-              <input className="new-email" type="email" required name="email" onChange={handleEmailChange} />
+              <h4>Epost:</h4>
+              <input className="new-email" type="email" required name="email" onChange={handleEmailChange} placeholder="epost"/>
             </label>
             <br /><br />
             <button type="submit">SEND</button>
