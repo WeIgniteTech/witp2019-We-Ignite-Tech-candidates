@@ -20,6 +20,7 @@ describe('Form input', () => {
     cy.get('.new-age').type(myText2).should('have.value',myText2);
     cy.wait(1000)
     const myText3 = '9';
+    // dechiper
     cy.get('.new-experience').type(myText3).should('have.value',myText3);
     let textIn = 'no clue';
     cy.get('.new-decipher').type(textIn).should('have.value',textIn);
